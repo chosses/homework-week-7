@@ -1,3 +1,8 @@
+function displayHumidity(response) {
+  let humidity = document.querySelector("#current-humidity");
+  humidity.innerHTML = response.data.temperature.humidity;
+}
+
 function weatherDescription(response) {
   let description = document.querySelector("#weather-description");
   description.innerHTML = response.data.condition.description;
@@ -21,6 +26,7 @@ function search(event) {
 
   axios.get(apiUrl).then(displayTemperature);
   axios.get(apiUrl).then(weatherDescription);
+  axios.get(apiUrl).then(displayHumidity);
 }
 
 function formatDate(date) {
