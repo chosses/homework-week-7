@@ -1,3 +1,8 @@
+function weatherDescription(response) {
+  let description = document.querySelector("#weather-description");
+  description.innerHTML = response.data.condition.description;
+}
+
 function displayTemperature(response) {
   let temperatureElement = document.querySelector("#current-temperature");
   let temperature = Math.round(response.data.temperature.current);
@@ -15,6 +20,7 @@ function search(event) {
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
 
   axios.get(apiUrl).then(displayTemperature);
+  axios.get(apiUrl).then(weatherDescription);
 }
 
 function formatDate(date) {
@@ -37,7 +43,7 @@ function formatDate(date) {
     "Wednesday",
     "Thursday",
     "Friday",
-    "Saturday"
+    "Saturday",
   ];
 
   let formattedDay = days[day];
