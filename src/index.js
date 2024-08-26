@@ -1,3 +1,8 @@
+function displayWindspeed(response) {
+  let windspeed = document.querySelector("#current-windspeed");
+  windspeed.innerHTML = response.data.wind.speed.toFixed(1);
+}
+
 function displayHumidity(response) {
   let humidity = document.querySelector("#current-humidity");
   humidity.innerHTML = response.data.temperature.humidity;
@@ -27,6 +32,7 @@ function search(event) {
   axios.get(apiUrl).then(displayTemperature);
   axios.get(apiUrl).then(weatherDescription);
   axios.get(apiUrl).then(displayHumidity);
+  axios.get(apiUrl).then(displayWindspeed);
 }
 
 function formatDate(date) {
