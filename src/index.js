@@ -1,3 +1,8 @@
+function displayWeatherIcon(response) {
+  let weatherIcon = document.querySelector(".current-temperature-icon");
+  weatherIcon.innerHTML = `<img src="${response.data.condition.icon_url}"/>`;
+}
+
 function displayWindspeed(response) {
   let windspeed = document.querySelector("#current-windspeed");
   windspeed.innerHTML = response.data.wind.speed.toFixed(1);
@@ -33,6 +38,7 @@ function search(event) {
   axios.get(apiUrl).then(weatherDescription);
   axios.get(apiUrl).then(displayHumidity);
   axios.get(apiUrl).then(displayWindspeed);
+  axios.get(apiUrl).then(displayWeatherIcon);
 }
 
 function formatDate(date) {
